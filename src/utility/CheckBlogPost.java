@@ -10,24 +10,24 @@ public class CheckBlogPost extends OffensiveWordsChecker implements OffensiveWor
 		String title = blog.getBlogTitle();
 		for(String str:offensiveWords) {
 			if(title.contains(str))
-				return false;
+				return true;
 		}
-		return true;
+		return false;
 	}
 
 	@Override
 	public boolean checkBlogDescription(Blog blog) {
-		String title = blog.getBlogTitle();
+		String title = blog.getBlogDescription();
 		for(String str:offensiveWords) {
 			if(title.contains(str))
-				return false;
+				return true;
 		}
-		return true;
+		return false;
 	}
 
 	@Override
 	public boolean checkBlog(Blog blog) {
-		return  (checkBlogTitle(blog) && checkBlogDescription(blog));
+		return  (!checkBlogTitle(blog) && !checkBlogDescription(blog));
 	}
 	
 }
